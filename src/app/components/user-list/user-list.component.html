@@ -1,0 +1,9 @@
+<h1>Utilisateur</h1>
+<!--{{users | json}}-->
+<h3>Ici il y a la liste de tout les utilisateurs ajouté en base</h3>
+
+<div *ngFor="let user of users" style="padding: 20px">
+<!--  <div>Id : {{user.id}}</div>-->
+  <div>Username : {{user.username}}</div>
+  <div>Mot de passe : {{user.password}}</div>
+</div>
