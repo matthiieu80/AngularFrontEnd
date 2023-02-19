@@ -1,9 +1,22 @@
-<h1>Utilisateur</h1>
-<!--{{users | json}}-->
-<h3>Ici il y a la liste de tout les utilisateurs ajouté en base</h3>
 
-<div *ngFor="let user of users" style="padding: 20px">
-<!--  <div>Id : {{user.id}}</div>-->
-  <div>Username : {{user.username}}</div>
-  <div>Mot de passe : {{user.password}}</div>
+<h2>Liste de tout vos contact</h2>
+
+<div *ngFor="let user of users" style="padding: 20px" class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="row">
+      <h2 class="card-title">
+        <div>{{user.username}}</div>
+      </h2>
+      <h5 class="card-text">
+        <div>{{user.password}}</div>
+      </h5>
+      <a href="#" class="btn btn-primary">More...</a>
+    </div>
+  </div>
 </div>
+
+<!--<div *ngFor="let user of users" style="padding: 20px">-->
+<!--  <div>Id : {{user.id}}</div>-->
+<!--  <div>Username : {{user.username}}</div>-->
+<!--  <div>Mot de passe : {{user.password}}</div>-->
+<!--</div>-->

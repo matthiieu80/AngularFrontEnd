@@ -11,10 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { SuppProductComponent } from './components/supp-product/supp-product.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-
-
-
-
+import { ScheduleModule, RecurrenceEditorModule, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { MyProfilComponent } from './components/my-profil/my-profil.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     ProductDetailsComponent,
     SuppProductComponent,
     UserListComponent,
+    ScheduleComponent,
+    MyProfilComponent,
 
 
   ],
@@ -32,9 +33,10 @@ import { UserListComponent } from './components/user-list/user-list.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [],
+  providers: [DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

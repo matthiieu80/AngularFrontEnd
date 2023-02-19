@@ -13,7 +13,8 @@ export class AddUserComponent {
   Users = {
     username: '',
     lastname: '',
-    password :''
+    adresseMail : '',
+    PhoneNumber : '',
   };
 
   constructor(private userService: UserService) { }
