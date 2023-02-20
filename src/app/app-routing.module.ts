@@ -10,6 +10,7 @@ import {MyProfilComponent} from "./components/my-profil/my-profil.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {ConnexionComponent} from "./components/connexion/connexion.component";
 import { AuthGuard } from './auth.guard';
+import {WeatherComponent} from "./components/weather/weather.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'connexion'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'add-user', component: AddUserComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'myprofil', component: MyProfilComponent},
+  {path: 'weather', component: WeatherComponent},
 
 ];
 

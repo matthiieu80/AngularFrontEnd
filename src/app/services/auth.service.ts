@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Utilisateur } from './utilisateur';
+import { Utilisateur } from '../utilisateur';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  signIn(credentials: any) {
+    return this.http.post('http://localhost:8080/api/auth/signin', credentials);
+  }
+
   public seConnecter(userInfo: Utilisateur){
     localStorage.setItem('ACCESS_TOKEN', "access_token");
   }

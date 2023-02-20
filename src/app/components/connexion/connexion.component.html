@@ -1,4 +1,6 @@
+<router-outlet></router-outlet>
 <h1 style="text-align:center">
+
 
 </h1>
 <div class="login">
@@ -21,7 +23,39 @@
     </div>
 
     <p>
-      <input type="submit" value="Log in">
+      <input type="submit" (click)="signIn(4000)" value="Log in">
+    </p>
+    <p>
+      Pas encore de compte ?
+      <button type="submit" (click)="showElement()">Sign in</button>
+      <!--      <input  (click)="register()" value="Sign in">-->
     </p>
   </form>
 </div>
+<div *ngIf="show">
+  <div class="login">
+    <h2 class="login-header">Inscription</h2>
+    <form class="login-container">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" [(ngModel)]="Users.username" name="username" id="username"
+               placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="Adresse mail">Password</label>
+        <input type="text" class="form-control" [(ngModel)]="Users.password" name="password" id="Adresse mail"
+               placeholder="Password">
+      </div>
+      <p>
+        <input type="submit" (click)="register()" value="Submit">
+      </p>
+
+    </form>
+
+
+
+  </div>
+</div>
+
+
+

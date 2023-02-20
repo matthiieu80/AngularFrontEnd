@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from  '@angular/router';
-import { AuthService } from "../../auth.service";
+import { AuthService } from "../../services/auth.service";
+import {HttpClient} from "@angular/common/http";
+import {UserService} from "../../services/user.service";
 
 
 
@@ -11,10 +13,19 @@ import { AuthService } from "../../auth.service";
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
+  show = false;
+
+  showElement() {
+    this.show = true;
+  }
+  Users = {
+    username: '',
+    password: '',
+  };
   loginForm!: FormGroup;
   isSubmitted  =  false;
   constructor(private authService: AuthService,
-              private router: Router, private formBuilder: FormBuilder ) { }
+              private router: Router, private formBuilder: FormBuilder, private http: HttpClient ,private userService: UserService ) { }
   ngOnInit() {
     this.loginForm  =  this.formBuilder.group({
       email: ['', Validators.required],
@@ -28,8 +39,19 @@ export class ConnexionComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
-    this.authService.seConnecter(this.loginForm.value);
+    this.authService.signIn(this.loginForm.value);
     this.router.navigateByUrl('/admin');
   }
 
+  signIn(credentials: any) {
+    return this.http.post('http://localhost:8080/api/auth/signin', credentials);
+  }
+
+  register() {
+    this.userService
+      .createUser(this.Users)
+      .subscribe(ok => {
+        alert('Utilisateur bien ajouté')
+      })
+  }
 }

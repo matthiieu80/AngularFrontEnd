@@ -16,6 +16,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { MyProfilComponent } from './components/my-profil/my-profil.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AdminComponent } from './components/admin/admin.component';
+import {WeatherComponent} from "./components/weather/weather.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AdminComponent } from './components/admin/admin.component';
     MyProfilComponent,
     ConnexionComponent,
     AdminComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,
