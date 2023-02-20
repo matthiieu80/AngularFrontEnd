@@ -2,8 +2,11 @@
 <h2>Liste de tout vos contact</h2>
 
 <div *ngFor="let user of users" style="padding: 20px" class="card" style="width: 18rem;">
-  <div class="card-body">
+  <div class="card-body" style="padding: 20px">
     <div class="row">
+      <h5 class="card-text">
+        <div>{{user.username}}</div>
+      </h5>
       <h2 class="card-title">
         <div>{{user.firstname}}</div>
       </h2>
@@ -17,7 +20,7 @@
         <div>{{user.phoneNumber}}</div>
       </h5>
       <h5 class="card-text">
-        <div>{{user.username}}</div>
+        <div>{{user.password}}</div>
       </h5>
       <a href="#" class="btn btn-primary">Plus de détails</a>
     </div>
