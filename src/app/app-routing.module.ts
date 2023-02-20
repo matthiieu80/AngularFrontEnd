@@ -7,15 +7,20 @@ import {UserListComponent} from "./components/user-list/user-list.component";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
 import { registerLicense } from '@syncfusion/ej2-base';
 import {MyProfilComponent} from "./components/my-profil/my-profil.component";
+import {AdminComponent} from "./components/admin/admin.component";
+import {ConnexionComponent} from "./components/connexion/connexion.component";
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'products', pathMatch: 'full'},
+  { path: '', pathMatch: 'full', redirectTo: 'connexion'},
+  { path: 'connexion', component: ConnexionComponent },
+  { path: 'admin', component: AdminComponent },
   {path: 'schedule', component: ScheduleComponent},
   {path: 'users', component: UserListComponent},
-  // {path: 'add-product', component: AddUserComponent},
   {path: 'add-user', component: AddUserComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'myprofil', component: MyProfilComponent},
+
 ];
 
 
