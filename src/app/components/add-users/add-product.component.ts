@@ -12,9 +12,11 @@ export class AddUserComponent {
 
   Users = {
     username: '',
+    adresseMail: '',
+    phoneNumber: '',
+    firstname: '',
     lastname: '',
-    adresseMail : '',
-    PhoneNumber : '',
+    password: '',
   };
 
   constructor(private userService: UserService) { }
