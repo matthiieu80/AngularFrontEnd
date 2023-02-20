@@ -4,22 +4,22 @@
 <div *ngFor="let user of users" style="padding: 20px" class="card" style="width: 18rem;">
   <div class="card-body">
     <div class="row">
-      <h2 class="card-title">
-        <div>{{user.firstname}}</div>
-      </h2>
-      <h2 class="card-text">
-      <div>{{user.lastname}}</div>
-    </h2>
-      <h5 class="card-text">
-        <div>{{user.adresseMail}}</div>
-      </h5>
-      <h5 class="card-text">
-        <div>{{user.phoneNumber}}</div>
-      </h5>
-      <h5 class="card-text">
-        <div>{{user.username}}</div>
-      </h5>
-      <a href="#" class="btn btn-primary">Plus de détails</a>
+      <h3 class="card-title">
+        <div>firstname : {{user.firstname}}</div>
+      </h3>
+      <h3 class="card-text">
+      <div>lastname : {{user.lastname}}</div>
+    </h3>
+      <h6 class="card-text">
+        <div>adresseMail : {{user.adresseMail}}</div>
+      </h6>
+      <h6 class="card-text">
+        <div>phoneNumber :{{user.phoneNumber}}</div>
+      </h6>
+      <h6 class="card-text">
+        <div>username :{{user.username}}</div>
+      </h6>
+      <a href="" class="btn btn-primary">Plus de détails</a>
     </div>
   </div>
 </div>
