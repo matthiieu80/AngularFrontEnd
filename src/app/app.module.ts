@@ -14,6 +14,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { MyProfilComponent } from './components/my-profil/my-profil.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MyProfilComponent } from './components/my-profil/my-profil.component';
     UserListComponent,
     ScheduleComponent,
     MyProfilComponent,
+    WeatherComponent,
 
 
   ],
