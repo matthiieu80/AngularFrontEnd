@@ -43,7 +43,7 @@ export class ConnexionComponent implements OnInit {
     this.router.navigateByUrl('/admin');
   }
 
-  signIn(credentials: any) {
+  LogIn(credentials: any) {
     return this.http.post('http://localhost:8080/api/auth/signin', credentials);
   }
 
