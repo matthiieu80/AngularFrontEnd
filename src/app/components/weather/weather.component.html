@@ -1,7 +1,19 @@
-<p>weather works!</p>
 <div *ngIf="weather">
   <h2>Météo actuelle</h2>
   <p>Température : {{ weather.current.temp }}°C</p>
   <p>Humidité : {{ weather.current.humidity }}%</p>
   <p>Vitesse du vent : {{ weather.current.wind_speed }} km/h</p>
 </div>
+
+<div *ngIf="weather && city">
+  <h2>Météo pour {{ city }}</h2>
+  <p>Température : {{ weather.current.temp }}°C</p>
+  <p>Humidité : {{ weather.current.humidity }}%</p>
+  <p>Vitesse du vent : {{ weather.current.wind_speed }} km/h</p>
+</div>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="city">Ville :</label>
+  <input type="text" id="city" [(ngModel)]="city" name="city">
+  <button type="submit">Chercher</button>
+</form>
