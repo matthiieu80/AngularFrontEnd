@@ -1,34 +1,22 @@
-<h5>Edit du profil, a faire</h5>
-
+<h4>TODO: Profil</h4>
 
 <div class="container">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Username</label>
-      <input type="email" class="form-control" [(ngModel)]="Users.firstname" name="firstname" id="exampleInputEmail1"
-             aria-describedby="emailHelp" placeholder="Username">
-      <small id="emailHelp" class="form-text text-muted"></small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">username</label>
-      <input type="text" class="form-control"  [(ngModel)]="Users.username" name="username" id="username" placeholder="Lastname">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Lastname</label>
-      <input type="text" class="form-control" [(ngModel)]="Users.lastname" name="lastname" id="exampleInputPassword1" placeholder="Lastname">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">password</label>
-      <input type="text" class="form-control" [(ngModel)]="Users.password" name="password" id="Adresse mail" placeholder="password">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Phone number</label>
-      <input type="number" class="form-control" [(ngModel)]="Users.phoneNumber" name="phoneNumber" id="Phone number" placeholder="phoneNumber">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Adresse mail</label>
-      <input type="email" class="form-control" [(ngModel)]="Users.adresseMail" name="adresseMail" id="adresseMail" placeholder="Adresse mail">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    <h6>Nom d'utilisateur :</h6>
+    <p>{{User.username}}</p>
+</div>
+<div class="container">
+    <h6>Adresse mail :</h6>
+    <p>{{User.adresseMail}}</p>
+</div>
+<div class="container">
+    <h6>Prénom :</h6>
+    <p>{{User.firstname}}</p>
+</div>
+<div class="container">
+    <h6>Nom :</h6>
+    <p>{{User.lastname}}</p>
+</div>
+<div class="container">
+    <h6>Téléphone :</h6>
+    <p>{{User.phoneNumber}}</p>
 </div>

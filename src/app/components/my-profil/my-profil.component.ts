@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import {User} from "../../models/user";
 
 @Component({
@@ -7,18 +8,29 @@ import {User} from "../../models/user";
   styleUrls: ['./my-profil.component.css']
 })
 export class MyProfilComponent implements OnInit {
-  Users = {
-    username: '',
-    adresseMail: '',
-    phoneNumber: '',
-    firstname: '',
-    lastname: '',
-    password: '',
+
+  user: User []= [];
+
+  User = {
+    username: 'kuribohk',
+    adresseMail: 'kuriboh@ygo.com',
+    phoneNumber: '0986523235',
+    firstname: 'Kuriboh',
+    lastname: 'Kowalczuk',
+    password: ''
   };
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this.getUser;
+  }
+
+  getUser():void{
+    this.userService.fetchUser()
+    .subscribe((user: User[]) => this.user = user);
   }
 
 }

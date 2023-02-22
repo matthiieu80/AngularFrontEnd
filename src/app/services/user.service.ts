@@ -12,7 +12,7 @@ export class UserService {
   }
 
   fetchUser(): Observable<User[]> {
-    return this.http.get<User[]>('http://localhost:8080/api/users');
+    return this.http.get<User[]>('http://localhost:8080/api/user/id');
   }
 
 
