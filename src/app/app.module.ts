@@ -38,7 +38,8 @@ import {WeatherComponent} from "./components/weather/weather.component";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule,
+    RecurrenceEditorModule
   ],
   providers: [DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
   bootstrap: [AppComponent]
