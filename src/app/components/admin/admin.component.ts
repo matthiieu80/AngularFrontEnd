@@ -10,15 +10,24 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
-  ngOnInit() {
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
   }
 
-  seDeconnecter(){
-    this.authService.deconnecter();
-    this.router.navigateByUrl('/connexion');
-  }
+  // seConnecter(): void {
+  //   if (this.authService.checkTokenValidity(this.token)) {
+  //     // Connecter l'administrateur
+  //   } else {
+  //     this.erreur = true;
+  //   }
+  // }
+
+  // seDeconnecter(){
+  //   this.authService.deconnecter();
+  //   this.router.navigateByUrl('/connexion');
+  // }
 
 
 

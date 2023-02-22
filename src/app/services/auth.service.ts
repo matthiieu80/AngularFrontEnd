@@ -12,6 +12,10 @@ export class AuthService {
     return this.http.post('http://localhost:8080/api/auth/signin', credentials);
   }
 
+  checkTokenValidity(token: string) {
+    return this.http.post('http://localhost:8080/api/auth/signin', token);
+  }
+
   public seConnecter(userInfo: Utilisateur){
     localStorage.setItem('ACCESS_TOKEN', "access_token");
   }
