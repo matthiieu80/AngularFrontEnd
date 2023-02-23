@@ -1,34 +1,160 @@
-<h5>Edit du profil, a faire</h5>
-
-
+<!--Vue du profil-->
+<h4>TODO: Profil</h4>
 <div class="container">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Username</label>
-      <input type="email" class="form-control" [(ngModel)]="Users.firstname" name="firstname" id="exampleInputEmail1"
-             aria-describedby="emailHelp" placeholder="Username">
-      <small id="emailHelp" class="form-text text-muted"></small>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#usernamePrompt" style="cursor: pointer;">
+        <h6>Nom d'utilisateur :</h6>
+        <p>{{userService.currentUser.username}}</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">username</label>
-      <input type="text" class="form-control"  [(ngModel)]="Users.username" name="username" id="username" placeholder="Lastname">
+    <hr>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#mailPrompt" style="cursor: pointer;">
+        <h6>Adresse mail :</h6>
+        <p>{{userService.currentUser.adresseMail}}</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Lastname</label>
-      <input type="text" class="form-control" [(ngModel)]="Users.lastname" name="lastname" id="exampleInputPassword1" placeholder="Lastname">
+    <hr>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#firstnamePrompt" style="cursor: pointer;">
+        <h6>Prénom :</h6>
+        <p>{{userService.currentUser.firstname}}</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">password</label>
-      <input type="text" class="form-control" [(ngModel)]="Users.password" name="password" id="Adresse mail" placeholder="password">
+    <hr>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#lastnamePrompt" style="cursor: pointer;">
+        <h6>Nom :</h6>
+        <p>{{userService.currentUser.lastname}}</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Phone number</label>
-      <input type="number" class="form-control" [(ngModel)]="Users.phoneNumber" name="phoneNumber" id="Phone number" placeholder="phoneNumber">
+    <hr>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#phonePrompt" style="cursor: pointer;">
+        <h6>Téléphone :</h6>
+        <p>{{userService.currentUser.phoneNumber}}</p>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Adresse mail</label>
-      <input type="email" class="form-control" [(ngModel)]="Users.adresseMail" name="adresseMail" id="adresseMail" placeholder="Adresse mail">
+    <hr>
+    <div class="container update" data-bs-toggle="modal" data-bs-target="#passwordPrompt" style="cursor: pointer;">
+        <h6>Modifier mot de passe</h6>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+</div>
+
+<!--Update prompts-->
+
+<!--username prompt-->
+<div class="modal fade" id="usernamePrompt" tabindex="-1" aria-labelledby="usernamePromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update username</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="text" id="username" name="username" [(ngModel)]="userService.currentUser.username">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--email prompt-->
+<div class="modal fade" id="mailPrompt" tabindex="-1" aria-labelledby="mailPromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update email</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="email" id="adresseMail" name="adresseMail" [(ngModel)]="userService.currentUser.adresseMail">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--firstname prompt-->
+<div class="modal fade" id="firstnamePrompt" tabindex="-1" aria-labelledby="firstnamePromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update prénom</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="text" id="firstname" name="firstname" [(ngModel)]="userService.currentUser.firstname">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--lastname prompt-->
+<div class="modal fade" id="lastnamePrompt" tabindex="-1" aria-labelledby="lastnamePromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update nom</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="text" id="lastname" name="lastname" [(ngModel)]="userService.currentUser.lastname">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--phone prompt-->
+<div class="modal fade" id="phonePrompt" tabindex="-1" aria-labelledby="phonePromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update téléphone</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="userService.currentUser.phoneNumber">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--password prompt-->
+<div class="modal fade" id="passwordPrompt" tabindex="-1" aria-labelledby="passwordPromptLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Update mot de passe</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="password" id="password" name="password" [(ngModel)]="userService.currentUser.password">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
