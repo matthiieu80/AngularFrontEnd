@@ -1,31 +1,32 @@
 <h4>TODO: Profil</h4>
 <div class="container">
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="showClickUpdateUsername()" style="cursor: pointer;">
         <h6>Nom d'utilisateur :</h6>
         <p>{{User.username}}</p>
+        <button onclick="updateUsername()">Update</button>
     </div>
     <hr>
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="updateMail()" style="cursor: pointer;">
         <h6>Adresse mail :</h6>
         <p>{{User.adresseMail}}</p>
     </div>
     <hr>
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="updateFirstname()" style="cursor: pointer;">
         <h6>Prénom :</h6>
         <p>{{User.firstname}}</p>
     </div>
     <hr>
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="updateLastname()" style="cursor: pointer;">
         <h6>Nom :</h6>
         <p>{{User.lastname}}</p>
     </div>
     <hr>
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="updatePhone()" style="cursor: pointer;">
         <h6>Téléphone :</h6>
         <p>{{User.phoneNumber}}</p>
     </div>
     <hr>
-    <div class="container update" onclick="location.href='';" style="cursor: pointer;">
+    <div class="container update" onclick="updatePassword()" style="cursor: pointer;">
         <h6>Modifier mot de passe</h6>
     </div>
 </div>
