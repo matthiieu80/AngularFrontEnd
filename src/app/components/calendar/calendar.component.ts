@@ -29,7 +29,7 @@ export class CalendarComponent implements OnInit {
     console.log("Valeur de eventToUpdate : ", this.eventToUpdate);
   }
 
-  onSubmitForm() {
+ /* onSubmitForm() {
     // Mettre à jour l'événement sélectionné avec les nouvelles valeurs
     console.log("Valeur de eventToUpdate avant mise à jour : ", this.eventToUpdate);
     const index = this.events.findIndex(event => event.id === this.eventToUpdate.id);
@@ -38,7 +38,25 @@ export class CalendarComponent implements OnInit {
     }
     console.log("Valeur de eventToUpdate après mise à jour : ", this.eventToUpdate);
     console.log("Evénements après mise à jour : ", this.events);
+  }*/
+
+
+  onSubmitForm() {
+    // Mettre à jour l'événement sélectionné avec les nouvelles valeurs
+    const index = this.events.findIndex(event => event.id === this.eventToUpdate.id);
+    if (index !== -1) {
+      this.events[index] = { ...this.eventToUpdate };
+    }
+
+    // Enregistrer les modifications dans le service
+    this.eventsService.updateEvent(this.eventToUpdate).subscribe(() => {
+      console.log("Les modifications ont été enregistrées avec succès !");
+    });
   }
+
+
+
+
 
   deleteEvent(id: number): void {
     this.eventsService.deleteEvent(id).subscribe(() => {

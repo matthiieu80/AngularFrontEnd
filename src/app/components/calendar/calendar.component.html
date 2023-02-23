@@ -1,6 +1,6 @@
 <app-event-form></app-event-form>
 <div class="container-fluid">
-  <h1>Liste Evenement</h1>
+  <h3 style="text-align: center">Planing de user.name</h3>
 </div>
 
 <div class="row">
@@ -70,8 +70,7 @@
         <form (ngSubmit)="onSubmitForm()">
           <div class="mb-3">
             <label for="FormControlInputTitle" class="form-label">Titre</label>
-            <input type="text" class="form-control" id="FormControlInputTitle" name="title" placeholder="Titre" [(ngModel)]="eventToUpdate.title">
-          </div>
+            <input type="text" class="form-control" id="FormControlInputTitle" name="title" placeholder="Titre" [(ngModel)]="eventToUpdate.title">          </div>
           <div class="mb-3">
             <label for="FormControlInputTime" class="form-label">Heure</label>
             <input type="time" class="form-control" id="FormControlInputTime" name="time" placeholder="Heure" [(ngModel)]="eventToUpdate.time">

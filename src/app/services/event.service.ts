@@ -42,6 +42,16 @@ export class EventsService {
 
 
 
+  updateEvent(event: Event): Observable<any> {
+    return this.http.put(`${this.eventsUrl}/${event.id}`, event)
+      .pipe(
+        map(() => {
+          this.getEvents().subscribe();
+        })
+      );
+  }
+
+
 
 
   deleteEvent(id: number): Observable<any> {
