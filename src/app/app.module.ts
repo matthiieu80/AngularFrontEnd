@@ -12,6 +12,9 @@ import { MyProfilComponent } from './components/my-profil/my-profil.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {WeatherComponent} from "./components/weather/weather.component";
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { FilterPipe } from './filter.pipe';
+import { EventFormComponent } from './components/event-form/event-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import {WeatherComponent} from "./components/weather/weather.component";
     MyProfilComponent,
     ConnexionComponent,
     AdminComponent,
-    WeatherComponent
+    WeatherComponent,
+    CalendarComponent,
+    FilterPipe,
+    EventFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,8 @@ import {WeatherComponent} from "./components/weather/weather.component";
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule,
+    RecurrenceEditorModule
   ],
   providers: [DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
   bootstrap: [AppComponent]

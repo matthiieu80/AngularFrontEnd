@@ -22,4 +22,11 @@ export class WeatherService {
 
     return this.http.get(this.apiUrl, { params });
   }
+
+  // Récupère les données météorologiques pour une ville donnée
+  getWeatherDataByCity(city: string) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+    return this.http.get(apiUrl);
+  }
+
 }
