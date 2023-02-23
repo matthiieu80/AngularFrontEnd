@@ -19,6 +19,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import {WeatherComponent} from "./components/weather/weather.component";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FilterPipe } from './filter.pipe';
+import { EventFormComponent } from './components/event-form/event-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FilterPipe } from './filter.pipe';
     WeatherComponent,
     CalendarComponent,
     FilterPipe,
+    EventFormComponent,
   ],
   imports: [
     BrowserModule,

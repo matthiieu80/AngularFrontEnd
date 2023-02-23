@@ -53,3 +53,6 @@ export class EventsService {
       );
   }
 }
+
+export class EventService {
+}

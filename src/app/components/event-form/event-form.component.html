@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h1>Ajouter un évènement</h1>
+  <form (submit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Titre</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="event.title" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Heure</label>
+      <input type="time" class="form-control" name="time" [(ngModel)]="event.time" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Type d'évènement</label>
+      <select class="form-control" name="type" [(ngModel)]="event.type" required>
+        <option value="Routine">Routine</option>
+        <option value="Repas">Repas</option>
+        <option value="Travail">Travail</option>
+        <option value="Loisir">Loisir</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </form>
+</div>
