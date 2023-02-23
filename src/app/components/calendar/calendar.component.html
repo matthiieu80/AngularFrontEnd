@@ -1,0 +1,104 @@
+<p>calendrier fonctionne!</p>
+<!--
+<app-event-form></app-event-form>
+-->
+<div class="container-fluid">
+  <h1>Liste Evenement</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="filterType">Type</label>
+      <select class="form-control" id="filterType" name="filterType" [(ngModel)]="filterType">
+        <option value="">Tous</option>
+        <option value="Routine">Routine</option>
+        <option value="Repas">Repas</option>
+        <option value="Travail">Travail</option>
+        <option value="Loisir">Loisir</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="startTime">Heure de début</label>
+      <input type="time" class="form-control" id="startTime" name="startTime" [(ngModel)]="startTime">
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <label for="endTime">Heure de fin</label>
+      <input type="time" class="form-control" id="endTime" name="endTime" [(ngModel)]="endTime">
+    </div>
+  </div>
+</div>
+
+<table class="table mt-4">
+  <thead>
+  <tr>
+    <th scope="col">ID No</th>
+    <th scope="col">titre</th>
+    <th scope="col">heure</th>
+    <th scope="col">type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of events | filter: filterType: startTime: endTime">
+    <td>{{ event.id }}</td>
+    <td>{{ event.title }}</td>
+    <td>{{ event.time }}</td>
+    <td>{{ event.type }}</td>
+    <td>
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="onEditEvent(event)">Modifier</button>&nbsp;
+
+      <button class="btn btn-success" (click)="deleteEvent(event.id)">Supprimer</button>    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<!-- formulaire modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Modifier l'événement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmitForm()">
+          <div class="mb-3">
+            <label for="FormControlInputTitle" class="form-label">Titre</label>
+            <input type="text" class="form-control" id="FormControlInputTitle" name="title" placeholder="Titre" [(ngModel)]="eventToUpdate.title">
+          </div>
+          <div class="mb-3">
+            <label for="FormControlInputTime" class="form-label">Heure</label>
+            <input type="time" class="form-control" id="FormControlInputTime" name="time" placeholder="Heure" [(ngModel)]="eventToUpdate.time">
+          </div>
+          <div class="mb-3">
+            <label for="FormControlInputType" class="form-label">Type</label>
+            <select class="form-control" id="FormControlInputType" name="type" [(ngModel)]="eventToUpdate.type" required>
+              <option value="Routine">Routine</option>
+              <option value="Repas">Repas</option>
+              <option value="Travail">Travail</option>
+              <option value="Loisir">Loisir</option>
+            </select>
+
+
+
+
+
+          </div>
+          <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

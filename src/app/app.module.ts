@@ -17,6 +17,8 @@ import { MyProfilComponent } from './components/my-profil/my-profil.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {WeatherComponent} from "./components/weather/weather.component";
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {WeatherComponent} from "./components/weather/weather.component";
     ConnexionComponent,
     AdminComponent,
     WeatherComponent,
+    CalendarComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
