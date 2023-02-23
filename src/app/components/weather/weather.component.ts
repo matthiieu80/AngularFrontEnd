@@ -10,6 +10,7 @@ export class WeatherComponent implements OnInit {
   latitude: number | undefined;
   longitude: number | undefined;
   weather: any;
+  city: string = '';
 
   constructor(private weatherService: WeatherService) { }
 
@@ -30,5 +31,12 @@ export class WeatherComponent implements OnInit {
         })
       })
     }
+  }
+
+  // Récupère les données météorologiques pour une ville donnée
+  onSubmit() {
+    this.weatherService.getWeatherDataByCity(this.city).subscribe((data: any) => {
+      this.weather = data;
+    });
   }
 }
