@@ -11,6 +11,16 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  currentUser: User = {
+    username: 'kuribohk',
+    adresseMail: 'kuriboh@ygo.com',
+    phoneNumber: '0986523235',
+    firstname: 'Kuriboh',
+    lastname: 'Kowalczuk',
+    password: '',
+    id: 0
+  };
+
   fetchUser(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:8080/api/user/id');
   }

@@ -12,20 +12,11 @@ export class MyProfilComponent implements OnInit {
 
   user: User []= [];
 
-  User = {
-    username: 'kuribohk',
-    adresseMail: 'kuriboh@ygo.com',
-    phoneNumber: '0986523235',
-    firstname: 'Kuriboh',
-    lastname: 'Kowalczuk',
-    password: ''
-  };
-
   @ViewChild("dialogLog")
   dialogLog!: ElementRef;
 
   constructor(
-    private userService: UserService
+    public userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -37,14 +28,8 @@ export class MyProfilComponent implements OnInit {
     .subscribe((user: User[]) => this.user = user);
   }
 
-  updateUsername(){
-    let saisie = prompt("Nouveau nom d'utilisateur :");
-        if (saisie == null || saisie == "") {
-            prompt("Modification annulée");
-        } else {
-            //TODO: Call update method
-            prompt("Nom d'utilisateur mis à jour");
-        } 
+  updateUser(currentUser: User){
+    //TODO
   }
 
 }
