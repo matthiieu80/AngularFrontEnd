@@ -14,12 +14,21 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { MyProfilComponent } from './components/my-profil/my-profil.component';
-import { ConnexionComponent } from './components/connexion/connexion.component';
+
 import { AdminComponent } from './components/admin/admin.component';
 import {WeatherComponent} from "./components/weather/weather.component";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FilterPipe } from './filter.pipe';
 import { EventFormComponent } from './components/event-form/event-form.component';
+import {httpInterceptorProviders} from "./services/http.interceptor";
+import { ProfilComponent } from './components/profil/profil.component';
+import { HomeComponent } from './components/home/home.component';
+import { BoardUserComponent } from './components/role/board-user/board-user.component';
+import { BoardAdminComponent } from './components/role/board-admin/board-admin.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,12 +40,17 @@ import { EventFormComponent } from './components/event-form/event-form.component
     UserListComponent,
     ScheduleComponent,
     MyProfilComponent,
-    ConnexionComponent,
     AdminComponent,
     WeatherComponent,
     CalendarComponent,
     FilterPipe,
     EventFormComponent,
+    ProfilComponent,
+    HomeComponent,
+    BoardUserComponent,
+    BoardAdminComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +61,7 @@ import { EventFormComponent } from './components/event-form/event-form.component
     ScheduleModule,
     RecurrenceEditorModule
   ],
-  providers: [DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
+  providers: [httpInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
