@@ -20,4 +20,12 @@ export class UserListComponent implements OnInit {
       });
   }
 
+  suppUsers(){
+    this.userService
+      .suppUser(this.users)
+      .subscribe(ok => {
+        alert("utilisateur bien supprimé")
+      })
+
+  }
 }

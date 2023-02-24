@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
 
@@ -17,6 +17,11 @@ export class UserService {
 
 
   createUser(createUser: any): Observable<void> {
-    return this.http.post<void>('http://localhost:8080/api/add-user', createUser);
+    return this.http.post<void>('http://localhost:8080/api/auth/signup', createUser);
+  }
+
+
+  suppUser(suppUser: any): Observable<void> {
+    return this.http.post<void>("http://localhost:8080/api/user/id", suppUser);
   }
 }

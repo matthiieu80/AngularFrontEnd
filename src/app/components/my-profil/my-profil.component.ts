@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-my-profil',
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-profil.component.css']
 })
 export class MyProfilComponent implements OnInit {
+  Users = {
+    username: '',
+    adresseMail: '',
+    phoneNumber: '',
+    firstname: '',
+    lastname: '',
+    password: '',
+  };
 
   constructor() { }
 

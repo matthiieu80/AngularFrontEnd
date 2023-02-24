@@ -5,17 +5,38 @@ import {AddUserComponent} from "./components/add-users/add-product.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 import {UserListComponent} from "./components/user-list/user-list.component";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
-import { registerLicense } from '@syncfusion/ej2-base';
+import {registerLicense} from '@syncfusion/ej2-base';
 import {MyProfilComponent} from "./components/my-profil/my-profil.component";
+import {AdminComponent} from "./components/admin/admin.component";
+
+
+import {WeatherComponent} from "./components/weather/weather.component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
+import {RegisterComponent} from "./components/register/register.component";
+import {HomeComponent} from "./components/home/home.component";
+import {BoardAdminComponent} from "./components/role/board-admin/board-admin.component";
+import {BoardUserComponent} from "./components/role/board-user/board-user.component";
+import {ProfilComponent} from "./components/profil/profil.component";
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'products', pathMatch: 'full'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: 'admin', component: AdminComponent},
   {path: 'schedule', component: ScheduleComponent},
   {path: 'users', component: UserListComponent},
-  // {path: 'add-product', component: AddUserComponent},
   {path: 'add-user', component: AddUserComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'myprofil', component: MyProfilComponent},
+  {path: 'weather', component: WeatherComponent},
+  {path: 'calendar', component: CalendarComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'profile', component: ProfilComponent},
+  {path: 'user', component: BoardUserComponent},
+  {path: 'admin', component: BoardAdminComponent},
+
+
 ];
 
 
