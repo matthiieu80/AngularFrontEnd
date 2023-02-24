@@ -20,7 +20,7 @@ import {ProfilComponent} from "./components/profil/profil.component";
 import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'connexion'},
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'admin', component: AdminComponent},
   {path: 'schedule', component: ScheduleComponent},
   {path: 'users', component: UserListComponent},
@@ -35,7 +35,6 @@ const routes: Routes = [
   {path: 'profile', component: ProfilComponent},
   {path: 'user', component: BoardUserComponent},
   {path: 'admin', component: BoardAdminComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
 
 
 ];
