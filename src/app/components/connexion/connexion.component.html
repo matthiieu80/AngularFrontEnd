@@ -1,54 +1,65 @@
-<router-outlet></router-outlet>
-<h1 style="text-align:center">
-
-
-</h1>
+<h1 style="text-align:center"></h1>
 <div class="login">
   <h2 class="login-header">S'identifier</h2>
   <form [formGroup]="loginForm" class="login-container" (ngSubmit)="seConnecter()">
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls['username'].errors }">
-      <input type="email" placeholder="Username" formControlName="email">
+    <p [ngClass]="{'has-error': isSubmitted && formControls['email'].errors}">
+      <input type="email" placeholder="Email" formControlName="email">
     </p>
-
     <div *ngIf="isSubmitted && formControls['email'].errors" class="help-block">
-      <div *ngIf="formControls['email'].errors['required']"><font color="red">L'email est requis</font></div>
+      <div *ngIf="formControls['email'].errors['required']">L'email est requis</div>
     </div>
 
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls['password'].errors }">
-      <input type="password" placeholder="Password" formControlName="password">
+    <p [ngClass]="{'has-error': isSubmitted && formControls['password'].errors}">
+      <input type="password" placeholder="Mot de passe" formControlName="password">
     </p>
 
     <div *ngIf="isSubmitted && formControls['password'].errors" class="help-block">
-      <div *ngIf="formControls['password'].errors['required']"><font color="red">Mot de passe requis</font></div>
+      <div *ngIf="formControls['password'].errors['required']">Mot de passe requis</div>
     </div>
 
     <p>
-      <input type="submit" (click)="LogIn(4000)" value="Log in">
+      <input type="submit" (click)="LogIn(4000)" value="Se connecter">
     </p>
+
     <p>
       Pas encore de compte ?
-      <button type="submit" (click)="showElement()">Sign in</button>
-      <!--      <input  (click)="register()" value="Sign in">-->
+      <button type="button" (click)="showElement()">S'inscrire</button>
     </p>
   </form>
 </div>
 <div *ngIf="show">
   <div class="login">
     <h2 class="login-header">Inscription</h2>
-    <form class="login-container">
+    <form [formGroup]="registrationForm" class="login-container" (ngSubmit)="register()">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" [(ngModel)]="Users.username" name="username" id="username"
-               placeholder="Username">
+        <label for="email">Adresse email</label>
+        <input type="email" class="form-control" formControlName="email" id="email" placeholder="Entrez votre adresse email">
+
+        <div *ngIf="registrationForm.get('email').touched && registrationForm.get('email').invalid">
+          <div *ngIf="registrationForm.get('email').hasError('required')">Ce champ est obligatoire</div>
+          <div *ngIf="registrationForm.get('email').hasError('email')">Veuillez entrer une adresse email valide</div>
+        </div>
       </div>
+
       <div class="form-group">
-        <label for="Adresse mail">Password</label>
-        <input type="password" class="form-control" [(ngModel)]="Users.password" name="password" id="Adresse mail"
-               placeholder="Password">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Entrez votre mot de passe">
+
+        <div *ngIf="registrationForm.get('password').touched && registrationForm.get('password').invalid">
+          <div *ngIf="registrationForm.get('password').hasError('required')">Ce champ est obligatoire</div>
+        </div>
       </div>
-      <p>
-        <input type="submit" (click)="register()" value="Submit">
-      </p>
+
+      <div class="form-group">
+          <label for="confirmPassword">Confirmer le mot de passe</label>
+          <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" placeholder="Confirmez votre mot de passe">
+          <div *ngIf="registrationForm.get('confirmPassword').touched && registrationForm.get('confirmPassword').invalid">
+            <div *ngIf="registrationForm.get('confirmPassword').hasError('required')">Ce champ est obligatoire</div>
+            <div *ngIf="registrationForm.get('confirmPassword').hasError('passwordMismatch')">
+        </div>
+      </div>
+      </div>
+      <button type="submit" [disabled]="registrationForm.invalid || isSubmitting" class="btn btn-primary">S'inscrire</button>
 
     </form>
 
@@ -56,6 +67,4 @@
 
   </div>
 </div>
-
-
 

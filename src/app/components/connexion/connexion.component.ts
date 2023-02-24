@@ -21,9 +21,12 @@ export class ConnexionComponent implements OnInit {
   Users = {
     username: '',
     password: '',
+    adresseMail: ''
   };
   loginForm!: FormGroup;
   isSubmitted  =  false;
+  registrationForm: any;
+  isSubmitting: Event | undefined;
   constructor(private authService: AuthService,
               private router: Router, private formBuilder: FormBuilder, private http: HttpClient ,private userService: UserService ) { }
   ngOnInit() {

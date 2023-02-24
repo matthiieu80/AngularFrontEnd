@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event';
 import { EventsService } from '../../services/event.service';
 
+
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -22,6 +24,18 @@ export class CalendarComponent implements OnInit {
       this.events = events;
     });
   }
+
+
+
+
+  getEventsAsString() {
+    let eventsString = '';
+    this.events.forEach(event => {
+      eventsString += 'Titre : `${event.title}`\nHeure : ${event.time}\nType : ${event.type}\n\n';
+    });
+    return eventsString;
+  }
+
 
   onEditEvent(event: Event) {
     console.log("Evénement sélectionné : ", event);
@@ -63,4 +77,23 @@ export class CalendarComponent implements OnInit {
       this.events = this.events.filter(event => event.id !== id);
     });
   }
+
+
+
+
+
+  shareEventByEmail() {
+    const emailSubject = `Liste des événements`;
+    let emailBody = `Bonjour,\n\nVoici la liste complète des événements :\n\n`;
+
+    for (let i = 0; i < this.events.length; i++) {
+      emailBody += `Titre : ${this.events[i].title}\nHeure : ${this.events[i].time}\nType : ${this.events[i].type}\n\n`;
+    }
+
+    emailBody += `Cordialement,`;
+
+    window.location.href = `mailto:?subject=${emailSubject}&body=${encodeURIComponent(emailBody)}`;
+  }
+
+
 }
