@@ -20,7 +20,7 @@ import {WeatherComponent} from "./components/weather/weather.component";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FilterPipe } from './filter.pipe';
 import { EventFormComponent } from './components/event-form/event-form.component';
-import {httpInterceptorProviders} from "./services/http.interceptor";
+import {authInterceptorProviders} from "./services/http.interceptor";
 import { ProfilComponent } from './components/profil/profil.component';
 import { HomeComponent } from './components/home/home.component';
 import { BoardUserComponent } from './components/role/board-user/board-user.component';
@@ -61,7 +61,7 @@ import { LoginComponent } from './components/login/login.component';
     ScheduleModule,
     RecurrenceEditorModule
   ],
-  providers: [httpInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
+  providers: [authInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

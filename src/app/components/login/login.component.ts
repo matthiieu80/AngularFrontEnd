@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {StorageService} from "../../services/stockage.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   isLoggedIn = false;
 
-  constructor(private authService: AuthService, private storageService: StorageService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   // onSubmit(): void {
@@ -48,15 +48,13 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
-    }
+
   }
 
   login() {
     console.log(this.loginForm.value['email'], this.loginForm.value['password'])
     this.authService
+
       .loginAuth(this.loginForm.value['email'], this.loginForm.value['password'])
       .subscribe({
         next: ok => {
