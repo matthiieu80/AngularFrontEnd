@@ -21,11 +21,6 @@
         <p>{{userService.currentUser.lastname}}</p>
     </div>
     <hr>
-    <div class="container update" data-bs-toggle="modal" data-bs-target="#phonePrompt" style="cursor: pointer;">
-        <h6>Téléphone :</h6>
-        <p>{{userService.currentUser.phoneNumber}}</p>
-    </div>
-    <hr>
     <div class="container update" data-bs-toggle="modal" data-bs-target="#passwordPrompt" style="cursor: pointer;">
         <h6>Modifier mot de passe</h6>
     </div>
@@ -107,27 +102,6 @@
             <form>
                 <div class="modal-body">
                     <input type="text" id="lastname" name="lastname" [(ngModel)]="userService.currentUser.lastname">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!--phone prompt-->
-<div class="modal fade" id="phonePrompt" tabindex="-1" aria-labelledby="phonePromptLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5">Update téléphone</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form>
-                <div class="modal-body">
-                    <input type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="userService.currentUser.phoneNumber">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" (click)="updateUser(userService.currentUser)" data-bs-dismiss="modal">Enregistrer</button>

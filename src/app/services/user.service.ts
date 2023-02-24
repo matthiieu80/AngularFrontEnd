@@ -14,7 +14,6 @@ export class UserService {
   currentUser: User = {
     username: 'kuribohk',
     adresseMail: 'kuriboh@ygo.com',
-    phoneNumber: '0986523235',
     firstname: 'Kuriboh',
     lastname: 'Kowalczuk',
     password: '',
