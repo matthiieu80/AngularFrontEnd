@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {TokenStorageService} from "./services/token-storage.service";
+import {CookieService} from 'ngx-cookie-service';
 
 import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [CookieService]
 })
 export class AppComponent {
 
@@ -16,7 +18,9 @@ export class AppComponent {
   showModeratorBoard = false;
   username?: string;
 
-  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService) {
+  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private cookieService: CookieService) {
+
+
   }
 
   ngOnInit(): void {

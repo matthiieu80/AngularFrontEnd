@@ -4,6 +4,9 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
+import { CookieService } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +20,7 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   isLoggedIn = false;
 
-  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder , private cookieService: CookieService) {
   }
 
   // onSubmit(): void {
@@ -54,10 +57,12 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.loginForm.value['email'], this.loginForm.value['password'])
     this.authService
-
       .loginAuth(this.loginForm.value['email'], this.loginForm.value['password'])
       .subscribe({
         next: ok => {
+          this.TokenStorageService.saveToken(ok.token);
+          this.cookieService.set('authToken', ok.token); // définit le token en tant que cookie
+          this.router.navigate(['/calendar']);
           console.log("connected")
         },
         error: err => console.log(err)

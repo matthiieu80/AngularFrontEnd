@@ -27,6 +27,8 @@ import { BoardUserComponent } from './components/role/board-user/board-user.comp
 import { BoardAdminComponent } from './components/role/board-admin/board-admin.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 
@@ -61,7 +63,7 @@ import { LoginComponent } from './components/login/login.component';
     ScheduleModule,
     RecurrenceEditorModule
   ],
-  providers: [authInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
+  providers: [authInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
