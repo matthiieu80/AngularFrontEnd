@@ -1,8 +1,8 @@
 <div class="login">
   <h2 class="login-header">S'identifier</h2>
   <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()" >
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls['username'].errors }">
-      <input type="email" placeholder="Username" formControlName="email">
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls['email'].errors }">
+      <input type="email" placeholder="Email" formControlName="email">
     </p>
 
     <div *ngIf="isSubmitted && formControls['email'].errors" class="help-block">
@@ -26,3 +26,6 @@
     </p>
   </form>
 </div>
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+

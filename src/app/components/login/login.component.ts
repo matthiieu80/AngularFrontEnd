@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
-import {TokenStorageService} from "../../services/token-storage.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { TokenStorageService } from '../../services/token-storage.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -13,34 +13,19 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-
   roles: string[] = [];
   loginForm!: FormGroup;
   isSubmitted = false;
   isLoggedIn = false;
+  errorMessage = '';
 
-  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder , private cookieService: CookieService) {
-  }
-
-  // onSubmit(): void {
-  //   const { mail, password } = this.form;
-  //
-  //   this.authService.loginAuth(mail, password).subscribe({
-  //     next: data => {
-  //       this.storageService.saveUser(data);
-  //
-  //       this.isLoginFailed = false;
-  //       this.isLoggedIn = true;
-  //       this.roles = this.storageService.getUser().roles;
-  //       this.reloadPage();
-  //     },
-  //     error: err => {
-  //       this.errorMessage = err.error.message;
-  //       this.isLoginFailed = true;
-  //     }
-  //   });
-  // }
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private cookieService: CookieService
+  ) {}
 
   get formControls() {
     return this.loginForm.controls;
@@ -51,27 +36,25 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-
   }
 
   login() {
-    console.log(this.loginForm.value['email'], this.loginForm.value['password'])
-    this.authService
-      .loginAuth(this.loginForm.value['email'], this.loginForm.value['password'])
-      .subscribe({
-        next: ok => {
-          this.TokenStorageService.saveToken(ok.token);
-          this.cookieService.set('authToken', ok.token); // définit le token en tant que cookie
-          this.router.navigate(['/calendar']);
-          console.log("connected")
-        },
-        error: err => console.log(err)
-      })
+    console.log(this.loginForm.value['email'], this.loginForm.value['password']);
+    this.authService.loginAuth(this.loginForm.value['email'], this.loginForm.value['password']).subscribe({
+      next: ok => {
+        this.tokenStorageService.saveToken(ok.token);
+        this.cookieService.set('authToken', ok.token); // définit le token en tant que cookie
+        this.router.navigate(['/calendar']);
+        console.log('connecté');
+      },
+      error: (err: HttpErrorResponse) => { // utiliser HttpErrorResponse ici
+        console.log(err);
+        this.errorMessage = err.error.message; // remplir la propriété errorMessage avec le message d'erreur
+      }
+    });
   }
 
-
-    showRegisterForm()
-    {
-      this.router.navigate(['/register']);
-    }
+  showRegisterForm() {
+    this.router.navigate(['/register']);
   }
+}
