@@ -1,29 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Utilisateur } from '../utilisateur';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+const AUTH_API = 'http://localhost:8080/api/auth';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+const USER_KEY = 'auth-user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  signIn(credentials: any) {
-    return this.http.post('http://localhost:8080/api/auth/signin', credentials);
+  loginAuth(email: string, password: string): Observable<any> {
+    return this.http.post(
+      AUTH_API + '/signin',
+      {
+        email,
+        password,
+      },
+
+      httpOptions
+    );
   }
 
-  checkTokenValidity(token: string) {
-    return this.http.post('http://localhost:8080/api/auth/signin', token);
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(
+      AUTH_API + '/signup',
+      {
+        username,
+        email,
+        password,
+      },
+      httpOptions
+    );
   }
 
-  public seConnecter(userInfo: Utilisateur){
-    localStorage.setItem('ACCESS_TOKEN', "access_token");
+  logout(): Observable<any> {
+    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
-  public estConnecte(){
-    return localStorage.getItem('ACCESS_TOKEN') !== null;
 
-  }
-  public deconnecter(){
-    localStorage.removeItem('ACCESS_TOKEN');
-  }
 }
