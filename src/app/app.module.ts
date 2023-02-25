@@ -9,25 +9,33 @@ import {AddUserComponent} from './components/add-users/add-product.component';
 import {ProductDetailsComponent} from './components/product-details/product-details.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { SuppProductComponent } from './components/supp-product/supp-product.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { ScheduleModule, RecurrenceEditorModule, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
-import { ScheduleComponent } from './components/schedule/schedule.component';
-import { MyProfilComponent } from './components/my-profil/my-profil.component';
+import {SuppProductComponent} from './components/supp-product/supp-product.component';
+import {UserListComponent} from './components/user-list/user-list.component';
+import {
+  ScheduleModule,
+  RecurrenceEditorModule,
+  DayService,
+  WeekService,
+  WorkWeekService,
+  MonthService,
+  MonthAgendaService
+} from '@syncfusion/ej2-angular-schedule';
+import {ScheduleComponent} from './components/schedule/schedule.component';
+import {MyProfilComponent} from './components/my-profil/my-profil.component';
 
-import { AdminComponent } from './components/admin/admin.component';
+import {AdminComponent} from './components/admin/admin.component';
 import {WeatherComponent} from "./components/weather/weather.component";
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { FilterPipe } from './filter.pipe';
-import { EventFormComponent } from './components/event-form/event-form.component';
+import {CalendarComponent} from './components/calendar/calendar.component';
+import {FilterPipe} from './filter.pipe';
+import {EventFormComponent} from './components/event-form/event-form.component';
 import {authInterceptorProviders} from "./services/http.interceptor";
-import { ProfilComponent } from './components/profil/profil.component';
-import { HomeComponent } from './components/home/home.component';
-import { BoardUserComponent } from './components/role/board-user/board-user.component';
-import { BoardAdminComponent } from './components/role/board-admin/board-admin.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
-
+import {ProfilComponent} from './components/profil/profil.component';
+import {HomeComponent} from './components/home/home.component';
+import {BoardUserComponent} from './components/role/board-user/board-user.component';
+import {BoardAdminComponent} from './components/role/board-admin/board-admin.component';
+import {RegisterComponent} from './components/register/register.component';
+import {LoginComponent} from "./components/login/login.component";
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
@@ -59,9 +67,10 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     FormsModule,
     ScheduleModule,
-    RecurrenceEditorModule
+    RecurrenceEditorModule,
+    CommonModule
   ],
-  providers: [authInterceptorProviders, DayService , WeekService , WorkWeekService , MonthService , MonthAgendaService],
+  providers: [authInterceptorProviders, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

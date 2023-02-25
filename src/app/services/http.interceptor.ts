@@ -11,14 +11,21 @@ const TOKEN_HEADER_KEY = 'Authorization';
 
   constructor(private token: TokenStorageService) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let authReq = req;
-    const token = this.token.getToken();
-    if (token != null) {
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      req = req.clone({
+        withCredentials: true,
+      });
+
+      return next.handle(req);
     }
-    return next.handle(authReq);
-  }
+  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   let authReq = req;
+  //   const token = this.token.getToken();
+  //   if (token != null) {
+  //     authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+  //   }
+  //   return next.handle(authReq);
+  // }
 }
 
 export const authInterceptorProviders = [
