@@ -10,7 +10,7 @@ const httpOptions = {
 };
 
 const USER_KEY = 'auth-user';
-
+const USER_KEY2 = 'auth-token';
 
 
 @Injectable({
@@ -46,15 +46,16 @@ export class AuthService {
 
   logout(): Observable<any> {
     console.log('Déconnexion');
+    sessionStorage.removeItem(USER_KEY);
+    sessionStorage.removeItem(USER_KEY2);
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
-  }
-
-  fetchUserProfil(): Observable<User>{
-    return this.http.get<User>("http://localhost:8080/api/profile")
   }
 
   fetchProfilById(id : number): Observable<any>{
     return this.http.get('http://localhost:8080/api/user/${id}')
   }
 
+  fetchUserProfil(): Observable<User>{
+    return this.http.get<User>("http://localhost:8080/api/profile")
+  }
 }

@@ -6,25 +6,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link active" aria-current="page" routerLink="users">Users List</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link" routerLink="add-user">Add User</a>-->
-<!--        </li>-->
         <li class="nav-item">
-          <a class="nav-link" routerLink="calendar">Calendar</a>
+          <a class="nav-link" routerLink="calendar">Calendrier</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="weather">Weather</a>
+          <a class="nav-link" routerLink="weather">Météo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="myprofil">My profile</a>
+          <a class="nav-link" routerLink="myprofil">Mon profil</a>
         </li>
       </ul>
-
       <form class="d-flex">
-        <a type="button" class="btn btn-danger" routerLink="login">Se Deconnecter</a>
+        <a type="button" class="btn btn-danger" (click)="logout()">Se déconnecter</a>
       </form>
     </div>
   </div>
