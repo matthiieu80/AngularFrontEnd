@@ -9,6 +9,8 @@ const httpOptions = {
 };
 
 const USER_KEY = 'auth-user';
+const USER_KEY2 = 'auth-token';
+
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +46,7 @@ export class AuthService {
   logout(): Observable<any> {
     console.log('Déconnexion');
     sessionStorage.removeItem(USER_KEY);
+    sessionStorage.removeItem(USER_KEY2);
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
 
