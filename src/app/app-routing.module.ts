@@ -1,9 +1,7 @@
+
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AddUserComponent} from "./components/add-users/add-product.component";
-import {ProductDetailsComponent} from "./components/product-details/product-details.component";
-import {UserListComponent} from "./components/user-list/user-list.component";
 import {ScheduleComponent} from "./components/schedule/schedule.component";
 import {registerLicense} from '@syncfusion/ej2-base';
 import {MyProfilComponent} from "./components/my-profil/my-profil.component";
@@ -24,9 +22,6 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
   {path: 'admin', component: AdminComponent},
   {path: 'schedule', component: ScheduleComponent},
-  {path: 'users', component: UserListComponent},
-  {path: 'add-user', component: AddUserComponent},
-  {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'myprofil', component: MyProfilComponent},
   {path: 'weather', component: WeatherComponent},
   {path: 'calendar', component: CalendarComponent},
