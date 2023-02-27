@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../models/event';
 import { EventsService } from '../../services/event.service';
-import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -9,7 +8,6 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
-  providers: [CookieService]
 
 })
 export class CalendarComponent implements OnInit {
