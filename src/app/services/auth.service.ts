@@ -8,7 +8,7 @@ const AUTH_API = 'http://localhost:8080/api/auth';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  withCredentials: true // Ajouter la propriété withCredentials: true ici
+  withCredentials: false // Ajouter la propriété withCredentials: true ici
 };
 
 const USER_KEY = 'auth-user';
