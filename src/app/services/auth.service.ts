@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Utilisateur } from '../utilisateur';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {User} from "../models/user";
 const AUTH_API = 'http://localhost:8080/api/auth';
 
 const httpOptions = {
@@ -9,6 +10,8 @@ const httpOptions = {
 };
 
 const USER_KEY = 'auth-user';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +47,10 @@ export class AuthService {
   logout(): Observable<any> {
     console.log('Déconnexion');
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+  }
+
+  fetchUserProfil(): Observable<User>{
+    return this.http.get<User>("http://localhost:8080/api/profile")
   }
 
   fetchProfilById(id : number): Observable<any>{

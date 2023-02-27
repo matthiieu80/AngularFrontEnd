@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { UserService } from 'src/app/services/user.service';
 import {User} from "../../models/user";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-my-profil',
@@ -10,26 +11,20 @@ import {User} from "../../models/user";
 })
 export class MyProfilComponent implements OnInit {
 
-  user: User []= [];
+  currentUser! : User
 
   @ViewChild("dialogLog")
   dialogLog!: ElementRef;
 
-  constructor(
-    public userService: UserService
-  ) { }
+  constructor(private userService: UserService, private authService : AuthService) { }
 
   ngOnInit(): void {
-    this.getUser;
-  }
-
-  getUser():void{
-    this.userService.fetchUser()
-    .subscribe((user: User[]) => this.user = user);
+    this.authService.fetchUserProfil()
+    .subscribe((user: User) => this.currentUser = user);
   }
 
   updateUser(currentUser: User){
-    //TODO
+    this.userService.updateUser(currentUser)
+      .subscribe((user: User) => this.currentUser = user)
   }
-
 }

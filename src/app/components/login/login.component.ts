@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {HttpInterceptor} from "@angular/common/http";
 import {HttpRequestInterceptor} from "../../services/http.interceptor";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-login',
@@ -18,13 +19,14 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
+
+
   form: any = {
     username: null,
     password: null
   };
 
 
-  roles: string[] = [];
   loginForm!: FormGroup;
   isSubmitted = false;
 
@@ -55,24 +57,24 @@ export class LoginComponent implements OnInit {
   // }
 
 
-  onSubmit(): void {
-    const { username, password } = this.user;
-
-    this.authService.loginAuth(username, password).subscribe({
-      next: data => {
-        this.TokenStorageService.saveUser(data);
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.TokenStorageService.getUser().roles;
-        this.reloadPage()
-      },
-      error: err => {console.log(err)
-        //
-        // this.errorMessage = err.error.message;
-        // this.isLoginFailed = true;
-      }
-    });
-  }
+  // onSubmit(): void {
+  //   const { username, password } = this.user;
+  //
+  //   this.authService.loginAuth(username, password).subscribe({
+  //     next: data => {
+  //       this.TokenStorageService.saveUser(data);
+  //       this.isLoginFailed = false;
+  //       this.isLoggedIn = true;
+  //       this.roles = this.TokenStorageService.getUser().roles;
+  //       this.reloadPage()
+  //     },
+  //     error: err => {console.log(err)
+  //
+  //       this.errorMessage = err.error.message;
+  //       this.isLoginFailed = true;
+  //     }
+  //   });
+  // }
 
   reloadPage(): void {
     window.location.reload();
@@ -97,17 +99,16 @@ export class LoginComponent implements OnInit {
       .loginAuth(this.loginForm.value['email'], this.loginForm.value['password'])
       .subscribe({
         next: data => {
-          console.log("Vous etes connecté")
+          console.log("Vous êtes connecté");
+          // Utilisation de la fonction de stockage de jetons pour enregistrer les informations utilisateur
           this.TokenStorageService.saveUser(data);
+          this.TokenStorageService.saveToken(data.token)
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = this.TokenStorageService.getUser().roles;
-          // this.reloadPage()
-          this.router.navigate(['/page-accueil'])
-        },
-        error: err => console.log(err)
-      })
-
+          // Redirection vers la page d'accueil après connexion
+          this.router.navigate(['/page-accueil/']);
+        }
+      });
   }
 
   showRegisterForm()

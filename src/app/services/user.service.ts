@@ -13,13 +13,12 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  currentUser: User = {
-    username: 'kuribohk',
-    adresseMail: 'kuriboh@ygo.com',
-    phoneNumber: '0986523235',
-    firstname: 'Kuriboh',
-    lastname: 'Kowalczuk',
-    password: '',
+  userdata: User = {
+    username: '',
+    email: '',
+    prenom: '',
+    nom: '',
+    passWord: '',
     id: 0
   };
 
@@ -45,5 +44,9 @@ export class UserService {
   login(username: string, password: string): Observable<User> {
     const body = { username, password };
     return this.http.post<User>(`${this.apiUrl}/login`, body);
+  }
+
+  updateUser(update : User):Observable<User>{
+    return this.http.post<User>("http://localhost:8080/api/update", update)
   }
 }
