@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from "../../services/WeatherService";
+import { WeatherData } from "./weatherInterface";
+import { WeatherAPIResponse } from "./weatherInterface";
+
+
+
+
 
 @Component({
   selector: 'app-weather',
@@ -9,8 +15,15 @@ import { WeatherService } from "../../services/WeatherService";
 export class WeatherComponent implements OnInit {
   latitude: number | undefined;
   longitude: number | undefined;
-  weather: any;
+  weather: WeatherData = { name: '', current: { temp: 0, humidity: 0, wind_speed: 0 } };
   city: string = '';
+  isLoading: boolean = false;
+
+
+
+
+
+
 
   constructor(private weatherService: WeatherService) { }
 
@@ -18,25 +31,45 @@ export class WeatherComponent implements OnInit {
     this.getLocation();
   }
 
-  // Récupère les coordonnées de l'utilisateur à l'aide de l'API de géolocalisation
   getLocation() {
     if ("geolocation" in navigator) {
       navigator.geolocation.watchPosition((success) => {
         this.latitude = success.coords.latitude;
         this.longitude = success.coords.longitude;
-
-        // Appelle l'API OpenWeatherMap pour récupérer les données météorologiques
-        this.weatherService.getWeatherDataByCoords(this.latitude, this.longitude).subscribe(data => {
-          this.weather = data;
-        })
+        this.getWeatherData();
       })
     }
   }
 
-  // Récupère les données météorologiques pour une ville donnée
-  onSubmit() {
-    this.weatherService.getWeatherDataByCity(this.city).subscribe((data: any) => {
+  getCityCoords(): void {
+    this.isLoading = true;
+    // @ts-ignore
+    this.weatherService.getCityCoords(this.city).subscribe((data: { lat: number, lon: number }[]) => {
+      if (data.length > 0) {
+        const coords = data[0];
+        // Appelle l'API OpenWeatherMap pour récupérer les données météorologiques
+        // @ts-ignore
+        this.weatherService.getWeatherDataByCoords(coords.lat, coords.lon).subscribe((data: WeatherData) => {
+          this.weather = data;
+          this.city = data['name']; // Mettre à jour la valeur de la ville
+          this.isLoading = false;
+        })
+      }
+    });
+  }
+
+
+  getWeatherData() {
+    // @ts-ignore
+    this.weatherService.getWeatherDataByCoords(this.latitude!, this.longitude!).subscribe((data: WeatherData) => {
       this.weather = data;
+      this.isLoading = false;
+    })
+  }
+
+  onSubmit() {
+    this.weatherService.getWeatherDataByCity(this.city).subscribe(data => {
+      this.weather = data as WeatherAPIResponse;
     });
   }
 }

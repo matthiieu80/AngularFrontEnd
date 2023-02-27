@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
+import * as https from "https";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,7 @@ export class WeatherService {
       .set('lat', latitude.toString())
       .set('lon', longitude.toString())
       .set('units', 'metric')
-      .set('appid', this.apiKey)
-
+      .set('appid', this.apiKey);
     return this.http.get(this.apiUrl, { params });
   }
 
@@ -29,4 +29,21 @@ export class WeatherService {
     return this.http.get(apiUrl);
   }
 
+  // Récupère les coordonnées géographiques d'une ville
+  getCityCoords(city: string) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather`;
+    let params = new HttpParams()
+      .set('q', city)
+      .set('appid', this.apiKey);
+    return this.http.get(apiUrl, { params });
+  }
 }
+
+
+/*
+https://api.openweathermap.org/data/2.5/weather?q=paris&appid=32e94775e57d2154a6f0f2cf8ae6df2b
+https://api.openweathermap.org/data/2.5/onecall/weather?q=paris&appid=32e94775e57d2154a6f0f2cf8ae6df2b
+https://api.openweathermap.org/data/2.5/onecall/weather?q=paris&appid=32e94775e57d2154a6f0f2cf8ae6df2b
+https://api.openweathermap.org/data/2.5/onecall/weather?q=p&appid=32e94775e57d2154a6f0f2cf8ae6df2b
+  https://api.openweathermap.org/data/2.5/weather?q=paris&appid=32e94775e57d2154a6f0f2cf8ae6df2b
+*/

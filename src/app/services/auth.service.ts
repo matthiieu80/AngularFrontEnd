@@ -42,6 +42,7 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
+    console.log('Déconnexion');
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
   }
 

@@ -17,10 +17,13 @@ export class TokenStorageService {
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
+    console.log('Token stocké dans sessionStorage: ' + token);
   }
 
   public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY)!;
+    const token = sessionStorage.getItem(TOKEN_KEY)!;
+    console.log('Token récupéré depuis sessionStorage: ' + token);
+    return token;
   }
 
   public saveUser(user : any): void {
