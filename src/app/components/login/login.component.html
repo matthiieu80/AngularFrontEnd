@@ -17,8 +17,14 @@
       <div *ngIf="formControls['password'].errors['required']"><font color="red">Mot de passe requis</font></div>
     </div>
 
+
+<!--    <button type="checkbox" (click)="rememberMe()" value="Se souvenir de moi">Se souvenir de moi</button>-->
+
+    <label  for="rememberMe"> <input type="checkbox" id="rememberMe" formControlName="rememberMe">Se souvenir de moi</label>
+
     <p>
       <input type="submit" value="Se connecter">
+
     </p>
     <p>
       Pas encore de compte ?

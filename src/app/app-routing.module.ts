@@ -18,6 +18,7 @@ import {BoardAdminComponent} from "./components/role/board-admin/board-admin.com
 import {BoardUserComponent} from "./components/role/board-user/board-user.component";
 import {ProfilComponent} from "./components/profil/profil.component";
 import {LoginComponent} from "./components/login/login.component";
+import {PageAccueilComponent} from "./components/page-accueil/page-accueil.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -35,6 +36,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfilComponent},
   {path: 'user', component: BoardUserComponent},
   {path: 'admin', component: BoardAdminComponent},
+  {path: 'page-accueil', component: PageAccueilComponent},
+
 
 
 ];

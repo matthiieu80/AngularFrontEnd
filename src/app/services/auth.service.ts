@@ -14,6 +14,7 @@ const USER_KEY = 'auth-user';
   providedIn: 'root',
 })
 export class AuthService {
+  private profil!: string;
   constructor(private http: HttpClient) {}
 
   loginAuth(email: string, password: string): Observable<any> {
@@ -42,6 +43,10 @@ export class AuthService {
 
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+  }
+
+  fetchProfilById(id : number): Observable<any>{
+    return this.http.get('http://localhost:8080/api/user/${id}')
   }
 
 }

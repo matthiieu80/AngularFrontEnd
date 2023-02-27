@@ -32,8 +32,27 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   isLoggedIn = false;
 
-  constructor(private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  forgotPasswordForm!: FormGroup;
+
+
+  constructor(private fb: FormBuilder , private TokenStorageService : TokenStorageService, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+    this.createForm();
   }
+
+
+  createForm() {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  // rememberMe() {
+  //   const username = this.loginForm.get('username')?.value;
+  //   const password = this.loginForm.get('password')?.value;
+  //   localStorage.setItem('username', username);
+  //   localStorage.setItem('password', password);
+  // }
 
 
   onSubmit(): void {
@@ -42,15 +61,15 @@ export class LoginComponent implements OnInit {
     this.authService.loginAuth(username, password).subscribe({
       next: data => {
         this.TokenStorageService.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.TokenStorageService.getUser().roles;
         this.reloadPage()
       },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
+      error: err => {console.log(err)
+        //
+        // this.errorMessage = err.error.message;
+        // this.isLoginFailed = true;
       }
     });
   }
@@ -77,16 +96,27 @@ export class LoginComponent implements OnInit {
 
       .loginAuth(this.loginForm.value['email'], this.loginForm.value['password'])
       .subscribe({
-        next: ok => {
-          console.log("connected")
+        next: data => {
+          console.log("Vous etes connecté")
+          this.TokenStorageService.saveUser(data);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.roles = this.TokenStorageService.getUser().roles;
+          // this.reloadPage()
+          this.router.navigate(['/page-accueil'])
         },
         error: err => console.log(err)
       })
-  }
 
+  }
 
   showRegisterForm()
   {
     this.router.navigate(['/register']);
+  }
+
+
+  redirectionPageAccueil(){
+    this.router.navigate(['/page-accueil'])
   }
 }

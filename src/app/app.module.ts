@@ -36,6 +36,8 @@ import {BoardAdminComponent} from './components/role/board-admin/board-admin.com
 import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from "./components/login/login.component";
 import {CommonModule} from "@angular/common";
+import { PageAccueilComponent } from './components/page-accueil/page-accueil.component';
+
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import {CommonModule} from "@angular/common";
     BoardAdminComponent,
     RegisterComponent,
     LoginComponent,
+    PageAccueilComponent,
+
   ],
   imports: [
     BrowserModule,
