@@ -113,6 +113,7 @@ export class LoginComponent implements OnInit {
   showRegisterForm()
   {
     this.router.navigate(['/register']);
+
   }
 
 
